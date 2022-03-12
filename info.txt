@@ -1,0 +1,3 @@
+Orange: #ff8200
+Background: #eceeeb
+Image bg: #f8fbf8
