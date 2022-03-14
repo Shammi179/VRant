@@ -1,3 +1,6 @@
 Orange: #ff8200
 Background: #eceeeb
 Image bg: #f8fbf8
+
+hero --> salad
+product1--> dish1
