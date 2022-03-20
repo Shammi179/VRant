@@ -544,7 +544,8 @@ footer .copyright{
 
 #prodetails{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 #prodetails .single-pro-image{
     width: 40%;
@@ -588,6 +589,11 @@ footer .copyright{
 }
 #prodetails .single-pro-details span{
     line-height: 25px;
+}
+#prodetails .single-pro-details i{
+    font-size: 18px;
+    color: #ff8200;
+    margin-right: 4px;
 }
 
 /* About Page */
