@@ -268,15 +268,13 @@ body {
 
 #dish1 .pro .des h5{
     padding-top: 7px;
-    /* color: #1a1a1a; */
-    color: #ff8200;
+    color: #3d3d3c;
     font-size: 14px;
 }
 
 #dish1 .pro .des i{
     font-size: 12px;
-    /* color: #26ac1c; */
-    color: #ecaf3c;
+    color: #ff8200;
 }
 
 #dish1 .pro .des h4{
@@ -305,7 +303,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("../img/banner/b2.jpg");
+    background-image: url("../img/banner/b2.png");
     width: 100%;
     height: 40vh;
     background-size: cover;
@@ -313,16 +311,16 @@ body {
 }
 
 #banner h4{
-    color: #fff;
+    color: white;
     font-size: 16px;
 }
 #banner h2{
-    color: #fff;
+    color: white;
     font-size: 30px;
     padding: 10px 0;
 }
 #banner h2 span{
-    color: #ef3636;
+    color: black;
 }
 #banner button:hover{
     background: #ff8200;
@@ -341,7 +339,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("../img/banner/b17.jpg");
+    background-image: url("../img/banner/buy2.png");
     min-width: 49%;
     height: 50vh;
     background-size: cover;
@@ -349,7 +347,7 @@ body {
     padding: 30px;
 }
 #sm-banner .banner-box2{
-    background-image: url("../img/banner/b17.jpg");
+    background-image: url("../img/banner/buy1.png");
 }
 #sm-banner h4{
     color: #fff;
@@ -372,42 +370,6 @@ body {
     border: 1px solid #ff8200;
 }
 
-#banner3{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0 80px;
-}
-
-#banner3 .banner-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-image: url("../img/banner/b18.jpg");
-    min-width: 30%;
-    height: 30vh;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-#banner3 .banner-box2{
-    background-image: url("../img/banner/b18.jpg");
-}
-#banner3 .banner-box3{
-    background-image: url("../img/banner/b18.jpg");
-}
-#banner3 h2{
-    color: #fff;
-    font-weight: 900;
-    font-size: 22px;
-}
-#banner3 h3{
-    color: #ec544e;
-    font-weight: 800;
-    font-size: 15px;
-}
 
 #newsletter{
     display: flex;
@@ -508,7 +470,7 @@ footer .copyright{
 
 /* Shop Page */
 #page-header{
-    background-image: url("../img/banner/b1.jpg");
+    background-image: url("../img/banner/b1.png");
     width: 100%;
     height: 40vh;
     background-size: cover;
