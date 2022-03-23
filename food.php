@@ -55,10 +55,10 @@
             <?php
                 if(isset($_POST['search_submit'])){
                     $search_text = $_POST['search-text'];
-                    $sql = "SELECT `f_img`, `f_name`, `f_star`, `f_price`, `f_details`, `f_category`, `f_specs` FROM `food` WHERE `f_name` LIKE '%{$search_text}%' order by `f_id` ASC";
+                    $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price` FROM `food` WHERE `f_name` LIKE '%{$search_text}%' order by `f_id` ASC";
                 }
                 else{
-                    $sql = "SELECT `f_img`, `f_name`, `f_star`, `f_price`, `f_details`, `f_category`, `f_specs` FROM `food` order by `f_id` ASC";
+                    $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price` FROM `food` order by `f_id` ASC";
                 }
                 $query = mysqli_query($con, $sql);
                 $len = mysqli_num_rows($query);
@@ -66,8 +66,11 @@
                 if($len > 0){
 
                     while($dish = mysqli_fetch_array($query)){
+                        
+                        echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
                         ?>
-                        <div class="pro" onclick="window.location.href='sdish.html';">
+                        <div class="pro">
+                            
                             <img src="<?php echo $dish['f_img']; ?>" alt="">
                             <div class="des">
                                 <span>Homemade</span>
@@ -83,7 +86,9 @@
                             </div>
                             <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
                         </div>
+                                    
             <?php
+            echo "</a>";
                     }
                 }
                 else{

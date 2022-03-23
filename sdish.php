@@ -29,40 +29,44 @@
         </div>
     </section>
 
+    <?php include 'connection.php';?>
 	<section id="prodetails" class="section-p1">
+
+        <?php 
+            $id = $_GET['id'];
+            $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price`, `f_details`, `f_category`, `f_nutrition` FROM `food` WHERE `f_id` = $id";
+            $query = mysqli_query($con, $sql);
+
+            $info = mysqli_fetch_array($query);
+        ?>
 		<div class="single-pro-image">
-			<img src="img/dish/f1.jpg" width="100%" id="MainImg">
-		
-			<div class="small-img-group">
-				<div class="small-img-col">
-					<img src="img/dish/f1.jpg" width="100%" class="small-img">
-				</div>
-				<div class="small-img-col">
-					<img src="img/dish/f2.jpg" width="100%" class="small-img">
-				</div>
-				<div class="small-img-col">
-					<img src="img/dish/f3.jpg" width="100%" class="small-img">
-				</div>
-				<div class="small-img-col">
-					<img src="img/dish/f4.jpg" width="100%" class="small-img">
-				</div>
-			</div>
+			<img src="<?php echo $info['f_img']; ?>" width="100%" id="MainImg">
 		</div>
 
 		<div class="single-pro-details">
-			<h6>Home / Salad</h6>
-			<h4>Salad for Lunch and Dinner</h4>
-			<h2><span>&#2547;</span> 139.00</h2>
+			<h6><?php echo $info['f_category']; ?></h6>
+			<h4><?php echo $info['f_name']; ?></h4>
+            
+			<h2><span>&#2547; </span><?php echo $info['f_price'];?></h2>
 			<input type="number" value="1">
 			<button class="normal">Add To Cart</button>
 			<h4>Food Dteails</h4>
-			<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit doloribus vitae esse 
-				necessitatibus, distinctio ipsa sapiente alias, repellat consectetur libero sequi. 
-				Asperiores, consectetur molestias nihil delectus cum voluptates ducimus facilis?
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit doloribus vitae esse 
-				necessitatibus, distinctio ipsa sapiente alias, repellat consectetur libero sequi. 
-				Asperiores, consectetur molestias nihil delectus cum voluptates ducimus facilis?
+			<span>
+            <?php echo $info['f_details'];?>
 			</span>
+            <h4>Nutritional Information (APPROX)</h4>
+			<span>
+            <?php echo $info['f_nutrition'];?> 
+            </span>
+            <h4>Review</h4>
+            <div class="star">
+                <?php
+                    for ($x = 0; $x < $info['f_star']; $x++) {
+                        echo "<i class='fas fa-star'>"; echo "</i>";
+                    }
+                ?>
+            </div>
+            
 		</div>
 	</section>
 
@@ -195,16 +199,6 @@
         </div>
     </footer>
 
-	<script>
-		var MainImg = document.getElementById('MainImg');
-		var smallimg = document.getElementsByClassName("small-img");
-		for (let i = 0; i < 4; i++) {
-			smallimg[i].onclick = function(){
-			MainImg.src = smallimg[i].src;
-			}	
-		}
-
-	</script>
     <script src="script.js"></script>
 </body>
 </html>
