@@ -733,8 +733,8 @@ footer .copyright{
 #blog img{
     width: 100%;
     height: 300px;
-    /* object-fit: cover; */
-    background-size: cover;
+    object-fit: cover;
+    /* background-size: cover; */
 }
 
 #blog .blog-details{
