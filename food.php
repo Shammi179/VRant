@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRant</title>
     <link rel="stylesheet" href="CSS/style.css">
-    
-    <!-- <script src="https://kit.fontawesome.com/cf695930be.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
@@ -20,7 +18,7 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-cart"></i></a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-cart"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
@@ -53,6 +51,7 @@
     <section id="dish1" class="section-p1">
         <div class="pro-container">
             <?php
+                session_start();
                 if(isset($_POST['search_submit'])){
                     $search_text = $_POST['search-text'];
                     $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price` FROM `food` WHERE `f_name` LIKE '%{$search_text}%' order by `f_id` ASC";
@@ -70,7 +69,6 @@
                         echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
                         ?>
                         <div class="pro">
-                            
                             <img src="<?php echo $dish['f_img']; ?>" alt="">
                             <div class="des">
                                 <span>Homemade</span>
@@ -78,13 +76,21 @@
                                 <div class="star">
                                     <?php
                                         for ($x = 0; $x < $dish['f_star']; $x++) {
-                                            echo "<i class='fas fa-star'>"; echo "</i>";
+                                            echo "<i class=\"fas fa-star\"></i>";
+                                        }
+                                        if($dish['f_star']<5){
+                                            for ($x = 0; $x < 5 - $dish['f_star']; $x++) {
+                                                echo "<i class=\"far fa-star\"></i>";
+                                            }
                                         }
                                     ?>
                                 </div>
                                 <h4><?php echo $dish['f_price']; ?> BDT</h4>
                             </div>
-                            <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
+                            <form action="" method="POST">
+                                <input type="hidden" name="food_id" value="<?= $dish['f_id'] ?>">
+                                <a href="" type="submit" name="add_cart"><i class="fa fa-shopping-cart cart"></i></a>
+                            </form> 
                         </div>
                                     
             <?php
@@ -116,8 +122,8 @@
         <div class="col">
             <img class="logo" src="img/logo/logoL.png" alt="">
             <h4>Contact</h4>
-            <p><strong>Address: </strong> Lakecircus Road, Kalabagan, Dhaka-1205</p>
-            <p><strong>Phone:</strong> +8801521256661 / +8801843441269</p>
+            <p><strong>Address: </strong> Dhanmondi, Dhaka-1205</p>
+            <p><strong>Phone:</strong> +8801521256661, +8801843441269</p>
             <div class="follow">
                 <h4>Follow us</h4>
                 <div class="icon">
@@ -153,7 +159,7 @@
 
 
         <div class="copyright">
-            <p>	&copy; 2021, Dynamic DUO - VRant Ltd.</p>
+            <p>	&copy; 2022, Dynamic DUO - VRant Ltd.</p>
         </div>
     </footer>
 

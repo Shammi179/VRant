@@ -19,7 +19,7 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-cart"></i></a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-cart"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
@@ -48,8 +48,10 @@
 			<h4><?php echo $info['f_name']; ?></h4>
             
 			<h2><span>&#2547; </span><?php echo $info['f_price'];?></h2>
-			<input type="number" value="1">
-			<button class="normal">Add To Cart</button>
+            <form action="" method="POST">
+			    <input type="number" value="1">
+			    <button class="normal" name="add" type="submit">Add To Cart</button>
+            </form>
 			<h4>Food Dteails</h4>
 			<span>
             <?php echo $info['f_details'];?>
@@ -62,13 +64,19 @@
             <div class="star">
                 <?php
                     for ($x = 0; $x < $info['f_star']; $x++) {
-                        echo "<i class='fas fa-star'>"; echo "</i>";
+                        echo "<i class=\"fas fa-star\"></i>";
+                    }
+                    if($info['f_star']<5){
+                        for ($x = 0; $x < 5 - $info['f_star']; $x++) {
+                            echo "<i class=\"far fa-star\"></i>";
+                        }
                     }
                 ?>
             </div>
             
 		</div>
 	</section>
+
 
 	<section id="dish1" class="section-p1">
         <h2>Special Dishes</h2>
@@ -158,8 +166,8 @@
         <div class="col">
             <img class="logo" src="img/logo/logoL.png" alt="">
             <h4>Contact</h4>
-            <p><strong>Address: </strong> Lakecircus Road, Kalabagan, Dhaka-1205</p>
-            <p><strong>Phone:</strong> +8801521256661 / +8801843441269</p>
+            <p><strong>Address: </strong> Dhanmondi, Dhaka-1205</p>
+            <p><strong>Phone:</strong> +8801521256661, +8801843441269</p>
             <div class="follow">
                 <h4>Follow us</h4>
                 <div class="icon">
@@ -195,7 +203,7 @@
 
 
         <div class="copyright">
-            <p>	&copy; 2021, Dynamic DUO - VRant Ltd.</p>
+            <p>	&copy; 2022, Dynamic DUO - VRant Ltd.</p>
         </div>
     </footer>
 
