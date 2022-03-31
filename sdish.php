@@ -10,26 +10,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
-    <section id="header">
-        <a href="#"><img src="img/logo/logoL.png" alt="" class="logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="food.php">Food</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-cart"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
-            </ul>
-        </div>
-        <div id="mobile">
-            <a href="cart.html"><i class="far fa-shopping-cart"></i></a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
-    </section>
-
-    <?php include 'connection.php';?>
+    <?php include 'header.php';?>
 	<section id="prodetails" class="section-p1">
 
         <?php 
@@ -50,7 +31,7 @@
 			<h2><span>&#2547; </span><?php echo $info['f_price'];?></h2>
             <form action="" method="POST">
 			    <input type="number" value="1">
-			    <button class="normal" name="add" type="submit">Add To Cart</button>
+			    <button class="normal" name="add_cart" type="submit">Add To Cart</button>
             </form>
 			<h4>Food Dteails</h4>
 			<span>
