@@ -50,6 +50,8 @@
     </section>
 
     <section id="dish1" class="section-p1">
+        <h2>Popular Orders</h2>
+        <p>Exclusive dishes for upcoming summer</p>
         <div class="pro-container">
             <?php
             
