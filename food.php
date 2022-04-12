@@ -6,29 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRant</title>
     <link rel="stylesheet" href="CSS/style.css">
-    
-    <!-- <script src="https://kit.fontawesome.com/cf695930be.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
-    <section id="header">
-        <a href="#"><img src="img/logo/logoL.png" alt="" class="logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="food.php">Food</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-cart"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
-            </ul>
-        </div>
-        <div id="mobile">
-            <a href="cart.html"><i class="far fa-shopping-cart"></i></a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
-    </section>
+    <?php include 'header.php';?>
 
     <section id="page-header">
         
@@ -37,7 +18,7 @@
         <p>Enjoy Authentic food with delicious taste</p>
         
     </section>
-    <?php include 'connection.php';?>
+    
 
     <section id="search">
 		<div class="search-container">
@@ -53,6 +34,7 @@
     <section id="dish1" class="section-p1">
         <div class="pro-container">
             <?php
+            
                 if(isset($_POST['search_submit'])){
                     $search_text = $_POST['search-text'];
                     $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price` FROM `food` WHERE `f_name` LIKE '%{$search_text}%' order by `f_id` ASC";
@@ -68,9 +50,9 @@
                     while($dish = mysqli_fetch_array($query)){
                         
                         echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
+                        $food_id=$dish['f_id'];
                         ?>
                         <div class="pro">
-                            
                             <img src="<?php echo $dish['f_img']; ?>" alt="">
                             <div class="des">
                                 <span>Homemade</span>
@@ -78,15 +60,25 @@
                                 <div class="star">
                                     <?php
                                         for ($x = 0; $x < $dish['f_star']; $x++) {
-                                            echo "<i class='fas fa-star'>"; echo "</i>";
+                                            echo "<i class=\"fas fa-star\"></i>";
+                                        }
+                                        if($dish['f_star']<5){
+                                            for ($x = 0; $x < 5 - $dish['f_star']; $x++) {
+                                                echo "<i class=\"far fa-star\"></i>";
+                                            }
                                         }
                                     ?>
                                 </div>
                                 <h4><?php echo $dish['f_price']; ?> BDT</h4>
                             </div>
-                            <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
+                            
+                            <form action="" method="POST">
+                                <input type="hidden" name="food_id" value="<?= $food_id ?>">
+                                <button type="submit" name="add_cart"><a><i class="far fa-shopping-cart"></i></a></button>
+                            </form> 
                         </div>
                                     
+                        
             <?php
             echo "</a>";
                     }
@@ -94,6 +86,7 @@
                 else{
                     echo "No results found";
                 }
+                
             ?>
             
         </div>
@@ -116,8 +109,8 @@
         <div class="col">
             <img class="logo" src="img/logo/logoL.png" alt="">
             <h4>Contact</h4>
-            <p><strong>Address: </strong> Lakecircus Road, Kalabagan, Dhaka-1205</p>
-            <p><strong>Phone:</strong> +8801521256661 / +8801843441269</p>
+            <p><strong>Address: </strong> Dhanmondi, Dhaka-1205</p>
+            <p><strong>Phone:</strong> +8801521256661, +8801843441269</p>
             <div class="follow">
                 <h4>Follow us</h4>
                 <div class="icon">
@@ -130,19 +123,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->
@@ -153,7 +146,7 @@
 
 
         <div class="copyright">
-            <p>	&copy; 2021, Dynamic DUO - VRant Ltd.</p>
+            <p>	&copy; 2022, Dynamic DUO - VRant Ltd.</p>
         </div>
     </footer>
 
