@@ -50,310 +50,113 @@
     </section>
 
     <section id="dish1" class="section-p1">
-        <h2>Popular Orders</h2>
-        <p>Exclusive dishes for upcoming summer</p>
         <div class="pro-container">
-            <a href="sdish.php?id=1" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/1.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Fruit Salad</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+            <?php
+            
+                $sql = "SELECT * FROM `food` order by `f_id` ASC";
+               
+                $query = mysqli_query($con, $sql);
+                $len = mysqli_num_rows($query);
+
+
+                while($dish = mysqli_fetch_array($query)){
+                    $food_id=$dish['f_id'];
+                    if($food_id<9){
+                    
+                    echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
+                    
+                    ?>
+                    <div class="pro">
+                        <img src="<?php echo $dish['f_img']; ?>" alt="">
+                        <div class="des">
+                            <span>Homemade</span>
+                            <h5><?php echo $dish['f_name']; ?></h5>
+                            <div class="star">
+                                <?php
+                                    for ($x = 0; $x < $dish['f_star']; $x++) {
+                                        echo "<i class=\"fas fa-star\"></i>";
+                                    }
+                                    if($dish['f_star']<5){
+                                        for ($x = 0; $x < 5 - $dish['f_star']; $x++) {
+                                            echo "<i class=\"far fa-star\"></i>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                            <h4><?php echo $dish['f_price']; ?> BDT</h4>
                         </div>
-                        <h4>500 BDT</h4>
+                        
+                        <form action="" method="POST">
+                            <input type="hidden" name="food_id" value="<?= $food_id ?>">
+                            <button type="submit" name="add_cart"><a><i class="far fa-shopping-cart"></i></a></button>
+                        </form> 
                     </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=2" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/2.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Vegetable Salad</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>450 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=3" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/3.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Ilish Panta</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>200 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=4" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/4.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Yougurt with Fruit & Almond</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>550 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=5" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/5.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Rui Fish Curry</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>350 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=6" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/6.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Vegetable Soup</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>300 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=7" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/7.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Chicken Curry</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>400 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=8" style="text-decoration: none;"></a>
-                <div class="pro">
-                    <img src="img/order/8.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Fresh Juice</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>100 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </div>
+                                
+                    
+        <?php
+                    }
+        echo "</a>";
+                }
+                
+            ?>
+            
         </div>
     </section>
 
     <section id="banner" class="section-m1">
         <h4>Summer Madness</h4>
         <h2>Up to <span>30% Off</span>  - Every Lunch & Dinner</h2>
-        <button class="normal">Explore More</button>
+        <button class="normal" onclick="window.location.href = 'food.php'">Explore More</button>
     </section>
 
     <section id="dish1" class="section-p1">
         <h2>Special Dishes</h2>
         <p>Our Special Dishes</p>
         <div class="pro-container">
-            <a href="sdish.php?id=12" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/12.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Sea Fish</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+            <?php
+            
+                $sql = "SELECT * FROM `food` order by `f_id` ASC";
+               
+                $query = mysqli_query($con, $sql);
+                $len = mysqli_num_rows($query);
+
+                while($dish = mysqli_fetch_array($query)){
+                    $food_id=$dish['f_id'];
+                    if($food_id>8 & $food_id<17){
+                    
+                    echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
+                    
+                    ?>
+                    <div class="pro">
+                        <img src="<?php echo $dish['f_img']; ?>" alt="">
+                        <div class="des">
+                            <span>Homemade</span>
+                            <h5><?php echo $dish['f_name']; ?></h5>
+                            <div class="star">
+                                <?php
+                                    for ($x = 0; $x < $dish['f_star']; $x++) {
+                                        echo "<i class=\"fas fa-star\"></i>";
+                                    }
+                                    if($dish['f_star']<5){
+                                        for ($x = 0; $x < 5 - $dish['f_star']; $x++) {
+                                            echo "<i class=\"far fa-star\"></i>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                            <h4><?php echo $dish['f_price']; ?> BDT</h4>
                         </div>
-                        <h4>700 BDT</h4>
+                        
+                        <form action="" method="POST">
+                            <input type="hidden" name="food_id" value="<?= $food_id ?>">
+                            <button type="submit" name="add_cart"><a><i class="far fa-shopping-cart"></i></a></button>
+                        </form> 
                     </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=2" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/2.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Vegetable Salad</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>450 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=9" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/9.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Chicken Soup</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>300 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=4" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/4.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Yougurt with Fruit & Almond</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>550 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=5" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/5.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Rui Fish Curry</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>350 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=6" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/6.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Vegetable Soup</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>300 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=11" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/11.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Payesh</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>200 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
-            <a href="sdish.php?id=10" style="text-decoration: none;">
-                <div class="pro">
-                    <img src="img/order/10.png" alt="">
-                    <div class="des">
-                        <span>Homemade</span>
-                        <h5>Roasted Vegetable</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>200 BDT</h4>
-                    </div>
-                    <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                </div>
-            </a>
+        <?php
+                    }
+        echo "</a>";
+                }
+            ?>
         </div>
     </section>
 
@@ -362,13 +165,13 @@
             <h4>crazy deals</h4>
             <h2>buy 1 get 1 free</h2>
             <span>The best authentic foods</span>
-            <button class="white">Learn More</button>
+            <button class="white" onclick="window.location.href = 'food.php'">Learn More</button>
         </div>
         <div class="banner-box banner-box2">
             <h4>crazy deals</h4>
             <h2>buy 1 get 1 free</h2>
             <span>The best authentic foods</span>
-            <button class="white">Learn More</button>
+            <button class="white" onclick="window.location.href = 'food.php'">Learn More</button>
         </div>
     </section>
 
@@ -403,19 +206,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->

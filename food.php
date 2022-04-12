@@ -34,6 +34,7 @@
     <section id="dish1" class="section-p1">
         <div class="pro-container">
             <?php
+            
                 if(isset($_POST['search_submit'])){
                     $search_text = $_POST['search-text'];
                     $sql = "SELECT `f_id`, `f_img`, `f_name`, `f_star`, `f_price` FROM `food` WHERE `f_name` LIKE '%{$search_text}%' order by `f_id` ASC";
@@ -49,6 +50,7 @@
                     while($dish = mysqli_fetch_array($query)){
                         
                         echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
+                        $food_id=$dish['f_id'];
                         ?>
                         <div class="pro">
                             <img src="<?php echo $dish['f_img']; ?>" alt="">
@@ -69,13 +71,14 @@
                                 </div>
                                 <h4><?php echo $dish['f_price']; ?> BDT</h4>
                             </div>
+                            
                             <form action="" method="POST">
-                                <input type="hidden" name="food_id" value="<?= $dish['f_id'] ?>">
-                                <button type="submit" name="add_cart"><i class="fa fa-shopping-cart cart"></i></button>
-                                <!-- <a href="" type="submit" name="add_cart"></a> -->
+                                <input type="hidden" name="food_id" value="<?= $food_id ?>">
+                                <button type="submit" name="add_cart"><a><i class="far fa-shopping-cart"></i></a></button>
                             </form> 
                         </div>
                                     
+                        
             <?php
             echo "</a>";
                     }
@@ -83,6 +86,7 @@
                 else{
                     echo "No results found";
                 }
+                
             ?>
             
         </div>
@@ -119,19 +123,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->

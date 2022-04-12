@@ -6,29 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRant</title>
     <link rel="stylesheet" href="CSS/style.css">
-    
-    <!-- <script src="https://kit.fontawesome.com/cf695930be.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
-    <section id="header">
-        <a href="#"><img src="img/logo/logoL.png" alt="" class="logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="food.php">Food</a></li>
-                <li><a class="active" href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-cart"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
-            </ul>
-        </div>
-        <div id="mobile">
-            <a href="cart.html"><i class="far fa-shopping-cart"></i></a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
-    </section>
+    <?php include 'header.php' ?>
 
     <section id="page-header" class="blog-header">
         
@@ -143,19 +124,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->

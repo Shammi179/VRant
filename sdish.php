@@ -31,6 +31,7 @@
 			<h2><span>&#2547; </span><?php echo $info['f_price'];?></h2>
             <form action="" method="POST">
 			    <input type="number" value="1">
+                <input type="hidden" name="food_id" value="<?= $id ?>">
 			    <button class="normal" name="add_cart" type="submit">Add To Cart</button>
             </form>
 			<h4>Food Dteails</h4>
@@ -59,87 +60,54 @@
 	</section>
 
 
-	<section id="dish1" class="section-p1">
+    <section id="dish1" class="section-p1">
         <h2>Special Dishes</h2>
-        <p>Exclusive dishes for upcoming summer</p>
+        <p>Our Special Dishes</p>
         <div class="pro-container">
-            <div class="pro">
-                <img src="img/order/1.png" alt="">
-                <div class="des">
-                    <span>Homemade</span>
-                    <h5>Fruit Salad</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>500 BDT</h4>
-                </div>
-                <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro">
-                <img src="img/order/2.png" alt="">
-                <div class="des">
-                    <span>Homemade</span>
-                    <h5>Vegetable Salad</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>450 BDT</h4>
-                </div>
-                <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-                
-            </div>
-            <div class="pro">
-                <img src="img/order/3.png" alt="">
-                <div class="des">
-                    <span>Homemade</span>
-                    <h5>Ilish Panta</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>200 BDT</h4>
-                </div>
-                <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro">
-                <img src="img/order/4.png" alt="">
-                <div class="des">
-                    <span>Homemade</span>
-                    <h5>Yougurt with Fruit & Almond</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>550 BDT</h4>
-                </div>
-                <a href="#"><i class="fa fa-shopping-cart cart"></i></a>
-            </div>
-        </div>
-    </section>
+            <?php
+            
+                $sql = "SELECT * FROM `food` order by `f_id` ASC";
+               
+                $query = mysqli_query($con, $sql);
+                $len = mysqli_num_rows($query);
 
-    <section id="newsletter" class="section-p1 section-m1">
-        <div class="newstext">
-            <h4>Sign Up For Newsletters</h4>
-            <p>Get E-mail updates about our latest shop and <span>special offers.</span> </p>
-
-        </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
+                while($dish = mysqli_fetch_array($query)){
+                    $food_id=$dish['f_id'];
+                    if($food_id>0 & $food_id<5){
+                    
+                    echo '<a href="sdish.php?id='.$dish['f_id'].'" style="text-decoration: none;">';
+                    
+                    ?>
+                    <div class="pro">
+                        <img src="<?php echo $dish['f_img']; ?>" alt="">
+                        <div class="des">
+                            <span>Homemade</span>
+                            <h5><?php echo $dish['f_name']; ?></h5>
+                            <div class="star">
+                                <?php
+                                    for ($x = 0; $x < $dish['f_star']; $x++) {
+                                        echo "<i class=\"fas fa-star\"></i>";
+                                    }
+                                    if($dish['f_star']<5){
+                                        for ($x = 0; $x < 5 - $dish['f_star']; $x++) {
+                                            echo "<i class=\"far fa-star\"></i>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                            <h4><?php echo $dish['f_price']; ?> BDT</h4>
+                        </div>
+                        
+                        <form action="" method="POST">
+                            <input type="hidden" name="food_id" value="<?= $food_id ?>">
+                            <button type="submit" name="add_cart"><a><i class="far fa-shopping-cart"></i></a></button>
+                        </form> 
+                    </div>
+        <?php
+                    }
+        echo "</a>";
+                }
+            ?>
         </div>
     </section>
 
@@ -161,19 +129,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->

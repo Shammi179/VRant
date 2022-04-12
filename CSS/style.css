@@ -301,8 +301,7 @@ body {
     font-size: 15px;
     font-weight: 700;
 }
-
-#dish1 .pro .cart{
+#dish1 .pro button{
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -315,7 +314,14 @@ body {
     bottom: 20px;
     right: 10px;
 }
+#dish1 .pro button i{
+    font-size: 16px;
+}
+#dish1 .pro button:hover{
+    cursor: pointer;
+    background-color: #a3ffb1;
 
+}
 #banner{
     display: flex;
     flex-direction: column;
@@ -724,7 +730,7 @@ footer .copyright{
 }
 #team .card .content .sci a:hover
 {
-   color: #0196e3;
+   color: #ff8200;
 }
 
 /* Blog page */
@@ -904,6 +910,13 @@ footer .copyright{
     width: 70px;
     padding: 10px 5px 10px 15px;
 }
+#cart table td button{
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}
+
 
 #cart table thead{
     border: 1px solid #e2e9e1;
@@ -923,6 +936,7 @@ footer .copyright{
 #cart table tbody td{
     font-size: 13px;
 }
+
 #cart-add{
     display: flex;
     flex-wrap: wrap;
@@ -936,11 +950,12 @@ footer .copyright{
 #subtotal h3{
     padding-bottom: 15px;
 }
-#coupon input{
+#coupon input,textarea{
     padding: 10px 20px;
     outline: none;
     width: 60%;
     margin-right: 10px;
+    margin-bottom: 10px;
     border: 1px solid #e2e9e1;
 }
 #coupon button,
@@ -948,6 +963,7 @@ footer .copyright{
     background-color: #ff8200;
     color: #fff;
     padding: 12px 20px;
+    margin-top: 40px;
 }
 #subtotal{
     width: 50%;
@@ -966,6 +982,11 @@ footer .copyright{
     padding: 10px;
     font-size: 13px;
 }
+#subtotal div label{
+    font-size: 13px;
+
+}
+
 
 /* Start Media Query */
 @media (max-width:799px){
@@ -1125,8 +1146,12 @@ footer .copyright{
     #about-head img{
         width: 100%;
     }
+    #about-head div{
+        width: 100%;
+    }
     #team .card{
         margin: 40px;
+        height: 600px;
     }
     /* Blog Page */
     #blog{

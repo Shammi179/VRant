@@ -21,74 +21,134 @@
         
     </section>
     
+    
+    
     <?php
-        if(isset($_POST['add_cart'])){
+        if(isset($_POST['remove'])){
             
-            if(isset($_SESSION['cart'])){
-                $session_array = array_column($_SESSION['cart'], "id");
-                echo $session_array;
+            if($_GET['action']=='remove'){
+                foreach($_SESSION['cart'] as $key=>$value){
+                    if($value['food_id'] == $_GET['id']){
+                        unset($_SESSION['cart'][$key]);
+                        echo "<script>alert('Dish has been Removed!');</script>";
+                        echo "<script>window.location='cart.php'</script>";
+
+                    }
+                }
             }
         }
 
+    if(isset($_SESSION['cart']) & !empty($_SESSION['cart'])){
+        $f_id = array_column($_SESSION['cart'], "food_id");
+        $sql = "SELECT * FROM `food`";
+        $query = mysqli_query($con, $sql);
+        $total = 0;
+        echo "
+        <section id=\"cart\" class=\"section-p1\">
+            <table width=\"100%\">
+                <thead>
+                    <tr>
+                        <td>Remove</td>
+                        <td>Image</td>
+                        <td>Food</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </thead>
+        ";
+        while($row = mysqli_fetch_array($query)){
+            foreach($f_id as $id){
+                if($row['f_id']==$id){
     ?>
-
-
-    <section id="cart" class="section-p1">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Remove</td>
-                    <td>Image</td>
-                    <td>Food</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tr>
-                <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                <td><img src="img/order/1.png" alt=""></td>
-                <td>Fruit Salad</td>
-                <td>300 BDT</td>
-                <td><input type="number" value="1"></td>
-                <td>300 BDT</td>
-            </tr>
-
+    <form action="cart.php?action=remove&id=<?php echo $id; ?>" method="post">
+                    <tr>
+                        <td><button type="submit" name="remove"><a><i class="far fa-times-circle"></a></i></button></td>
+                    
+                        <td><img src="<?php echo $row['f_img']; ?>"></td>
+                        <td><?php echo $row['f_name']; ?></td>
+                        <td>
+                            <?php echo $row['f_price']; ?> BDT
+                            <input type="hidden" class="iprice" value="<?php echo $row['f_price']; ?>">
+                        </td>
+                        <td><input type="number" onchange="subTotal()" value="1" min="1" class="iquantity"></td>
+                        <td class="isubTotal"></td>
+                    </tr>
+    <?php
+                    $total=$total + $row['f_price'];
+                }
+            }
+        }
+    ?>
         </table>
+        </form>
+    
+        </section>
+        <section id="cart-add" class="section-p1">
+                <div id="coupon">
+                    <h3>Personal Information</h3>
+                    <form action="" method="POST">
+                    <div>
+                        <input type="text" name="fname" placeholder="Enter Your Name" required>
+                        <input type="email" name="email" placeholder="Enter Your Email" required>
+                        <input type="text" name="phone" placeholder="Enter Your Phone" required>
+                        <textarea name="address" rows="2" placeholder="Enter Your Address" required></textarea>
+                        <!-- <input type="text" name="" placeholder="Enter Your Coupon">
+                        <button class="normal">Apply</button> -->
+                    </div>
+                    
+                </div>
+                <div id="subtotal">
+                    <h3>Cart Totals</h3>
+                    <table>
+                        <tr>
+                            <td>Cart Subtotal</td>
+                            <td id="gtotal"></td>
+                        </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td>Free</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td ><strong id="atotal"></strong></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <input type="radio" checked>
+                        <label>Cash on Delivery</label>
+                    </div>
 
-    </section>
+                    <button class="normal" name="purchase">Confirm Order</button>
+                </div>
+                </form>
+            </section>
+    <?php
+    }
+    // elseif(empty($_SESSION['cart'])){
+    //     echo "<h2  style=\"text-align: center; margin: 50px;\">Cart is Empty.</h2>";
+    // }
+    else{
+        echo "<h2  style=\"text-align: center; margin: 50px;\">Cart is Empty.</h2>";
+    }
+    if(isset($_POST['purchase'])){
+        
+        $sql1 = "INSERT INTO `orders` (`full_name`, `email`, `phone`, `address`) VALUES ('$_POST[fname]','$_POST[email]','$_POST[phone]','$_POST[address]')";
 
-    <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
-            </div>
+        if(mysqli_query($con,$sql1)){
+            unset($_SESSION['cart']);
+            echo "<h2  style=\"text-align: center; margin: 50px; color: #ff8200;\">Order Confirmed!</h2>";
+        }
+        else{
+            echo "<h2  style=\"text-align: center; margin: 50px; color: red;\">Order Not Confirmed!</h2>";
+        }
+    }
 
-        </div>
-        <div id="subtotal">
-            <h3>Cart Totals</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>300 BDT</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>300 BDT</strong></td>
-                </tr>
-            </table>
-            <button class="normal">Proceed to Checkout</button>
 
-        </div>
-
-    </section>
-
+    ?>
+    
+        
+    
     <footer class="section-p1">
         <div class="col">
             <img class="logo" src="img/logo/logoL.png" alt="">
@@ -107,19 +167,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->
@@ -135,6 +195,25 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        var iprice = document.getElementsByClassName('iprice');
+        var iquantity = document.getElementsByClassName('iquantity');
+        var isubTotal = document.getElementsByClassName('isubTotal');
+        var gtotal = document.getElementById('gtotal');
+        var atotal = document.getElementById('atotal');
+
+        function subTotal(){
+            gt = 0;
+            for(i=0;i<iprice.length;i++){
+                isubTotal[i].innerText = (iprice[i].value)*(iquantity[i].value) + " BDT";
+                gt = gt+(iprice[i].value)*(iquantity[i].value);
+            }
+            gtotal.innerText=gt + " BDT";
+            atotal.innerText=gt + " BDT";
+        }
+        subTotal();
+
+    </script>
 </body>
 </html>
 

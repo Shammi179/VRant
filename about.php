@@ -6,29 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRant</title>
     <link rel="stylesheet" href="CSS/style.css">
-    
-    <!-- <script src="https://kit.fontawesome.com/cf695930be.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
-    <section id="header">
-        <a href="#"><img src="img/logo/logoL.png" alt="" class="logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="food.php">Food</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a class="active" href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-cart"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
-            </ul>
-        </div>
-        <div id="mobile">
-            <a href="cart.html"><i class="far fa-shopping-cart"></i></a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
-    </section>
+    <?php include 'header.php' ?>
 
     <section id="page-header" class="about-header">
         
@@ -42,17 +23,17 @@
 		<img src="img/about/about.png" alt="" width="100%">
 		<div>
 			<h2>Who We Are?</h2>
-			<p>This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.This is our Web Engineering Project name VRant. VRant is a E-commerce
-				platform for taking the authentic foods of the users doorsteps.</p>
+			<p>VRant is a food ordering system where a user can order food and get the desired healthy food. 
+                People will get only healthy foods from this site. For example, fruits, fruit salad, vegetable salad, 
+                chicken soup, and so on. Fast food or any unhealthy food will not be available on this site. 
+                Using this web app, a user can get the feeling of a virtual restaurant. Nowadays, we can see many 
+                restaurants that provide various types of delicious food. But all the delicious foods are not healthy. 
+                We want to make a platform from where a person can get healthy foods. Sometimes, we can see that people 
+                want to follow a healthy diet but due to being busy all day long, they cannot prepare healthy foods for 
+                them and that's why they order some food that is available online and eat them. Our project will reduce 
+                this problem. We will help people to get healthy and nutritious foods through our website.</p>
+                <h4>VRant</h4>
+                <p>Order our food, Get a healthy diet!</p>
 		</div>
 	</section>
 	
@@ -73,9 +54,9 @@
 						<p>Daffodil International University</p>
 					</div>
 					<div class="sci">
-						<a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-						<a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-						<a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+						<a href="https://www.facebook.com/imsajaldas"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+						<a href="https://www.instagram.com/sajaldas19/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+						<a href="https://twitter.com/0xSajal"><i class="fab fa-twitter" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			</div>
@@ -90,9 +71,9 @@
 						<p>Daffodil International University</p>
 					</div>
 					<div class="sci">
-						<a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-						<a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-						<a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+						<a href="https://www.facebook.com/shumaiyaakter.shammi"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+						<a href="https://www.instagram.com/shumaiya._shammi/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+						<a href="https://twitter.com/ShammiShumaiya"><i class="fab fa-twitter" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			</div>
@@ -157,19 +138,19 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
+            <a href="about.php">About us</a>
+            <a href="cart.php">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
         </div>
 
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
+            <a href="cart.php">View Cart</a>
+            <a href="cart.php">My Wishlist</a>
+            <a href="cart.php">Track My Order</a>
             <a href="#">Help</a>
         </div>
         <!-- App Install Not added -->
