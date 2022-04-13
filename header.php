@@ -1,6 +1,6 @@
 <?php
-	$con = mysqli_connect('remotemysql.com','LkZ0dW0DgD','qDxN8FVatM','LkZ0dW0DgD');
-	mysqli_select_db($con, 'LkZ0dW0DgD');
+	$con = mysqli_connect('localhost','root');
+	mysqli_select_db($con, 'vrantdb');
 
 	session_start();
 	$page = basename($_SERVER['PHP_SELF']);
