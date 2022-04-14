@@ -53,17 +53,26 @@
 	</section>
 
 	<section id="form-details">
-		<form action="">
+		<form action="" method="POST">
 			<span>LEAVE A MESSAGE</span>
 			<h2>We love to hear from you</h2>
-			<input type="text" placeholder="Your name">
-			<input type="text" placeholder="E-mail">
-			<input type="text" placeholder="Subject">
-			<textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-			<button class="normal">Submit</button>
+			<input type="text" placeholder="Your name" name="feed_name">
+			<input type="text" placeholder="E-mail" name="feed_email">
+			<input type="text" placeholder="Subject" name="feed_sub">
+			<textarea name="feed_msg" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+			<button class="normal" name="insert">Submit</button>
 		</form>
-
 	</section>
+
+    <?php
+    if(isset($_POST['insert'])){
+        $insert = "INSERT INTO `feedback`(`name`, `email`, `subject`, `msg`) VALUES ('$_POST[feed_name]','$_POST[feed_email]','$_POST[feed_sub]','$_POST[feed_msg]')";
+        mysqli_query($con, $insert);
+        echo "<h2  style=\"text-align: center; margin: 50px; color: #ff8200;\">Thank you for Feedback</h2>";
+        
+    }
+
+    ?>
 
 	<section id="newsletter" class="section-p1 section-m1">
         <div class="newstext">

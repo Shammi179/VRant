@@ -125,9 +125,7 @@
             </section>
     <?php
     }
-    // elseif(empty($_SESSION['cart'])){
-    //     echo "<h2  style=\"text-align: center; margin: 50px;\">Cart is Empty.</h2>";
-    // }
+
     else{
         echo "<h2  style=\"text-align: center; margin: 50px;\">Cart is Empty.</h2>";
     }
@@ -143,11 +141,7 @@
             echo "<h2  style=\"text-align: center; margin: 50px; color: red;\">Order Not Confirmed!</h2>";
         }
     }
-
-
-    ?>
-    
-        
+    ?>    
     
     <footer class="section-p1">
         <div class="col">

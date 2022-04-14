@@ -364,7 +364,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("../img/banner/buy2.png");
+    background-image: url("../img/banner/buy3.png");
     min-width: 49%;
     height: 50vh;
     background-size: cover;
@@ -736,7 +736,7 @@ footer .copyright{
 /* Blog page */
 
 #page-header.blog-header{
-    background-image: url("../img/blog/blogBG.png");
+    background-image: url("../img/blog/bloghead.png");
 }
 
 #blog{
