@@ -15,7 +15,7 @@ Website Link: [Click Here](https://vrant.000webhostapp.com/)
 <hr width="100%" color="black">
 
 ![book](git_img/3.png)
-<p align="center">Popular Orders</p>
+<p align="center">Search Food</p>
 <hr width="100%" color="black">
 
 ## Team - Dynamic DUO
