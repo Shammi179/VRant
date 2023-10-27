@@ -8,27 +8,27 @@ Website Link: [Click Here](https://vrant.000webhostapp.com/)
 
 ![app](git_img/1.png)
 <p align="center">Home</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ![book](git_img/2.png)
 <p align="center">Popular Orders</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ![book](git_img/3.png)
 <p align="center">Search Food</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ![book](git_img/4.png)
 <p align="center">Blogs</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ![book](git_img/5.png)
 <p align="center">Location</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ![book](git_img/6.png)
 <p align="center">Payment Methods</p>
-<hr width="100%" color="black">
+<!-- <hr width="100%" color="black"> -->
 
 ## Team - Dynamic DUO
   * [Shumaiya Akter Shammi](https://github.com/Shammi179)<br>
