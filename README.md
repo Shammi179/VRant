@@ -18,6 +18,18 @@ Website Link: [Click Here](https://vrant.000webhostapp.com/)
 <p align="center">Search Food</p>
 <hr width="100%" color="black">
 
+![book](git_img/4.png)
+<p align="center">Blogs</p>
+<hr width="100%" color="black">
+
+![book](git_img/5.png)
+<p align="center">Location</p>
+<hr width="100%" color="black">
+
+![book](git_img/6.png)
+<p align="center">Payment Methods</p>
+<hr width="100%" color="black">
+
 ## Team - Dynamic DUO
   * [Shumaiya Akter Shammi](https://github.com/Shammi179)<br>
   * [Sajal Das](https://github.com/sajaldas19)
